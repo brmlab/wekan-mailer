@@ -19,9 +19,10 @@ public class Application implements CommandLineRunner {
 
 
     @Override
-    public void run(String... args)  {
+    public void run(String... args) {
         try {
             WekanConfiguration wekanConfiguration = new WekanConfiguration();
+
         } catch (BrmException ex) {
             System.exit(ex.getExitCode().getCode());
         }
