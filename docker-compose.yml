@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  wekanmailer:
+    image: malanius/wekan-mailer:latest
+    container_name: wekan-mailer
+    restart: always
+    environment:
+      - WEKAN_URL=http://localhost:3000
+      - WEKAN_USER=someuser
+      - WEKAN_PASSWORD=somepass
+      - WEKAN_TARGET_BOARD=someId
+      - WEKAN_TARGET_LIST=someListId
