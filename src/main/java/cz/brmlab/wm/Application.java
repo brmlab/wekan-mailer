@@ -2,6 +2,9 @@ package cz.brmlab.wm;
 
 import cz.brmlab.wm.utils.Exceptions.BrmException;
 import cz.brmlab.wm.wekan.WekanConfiguration;
+import cz.brmlab.wm.wekan.pojo.card.CardRequest;
+import cz.brmlab.wm.wekan.rest.CardPost;
+import cz.brmlab.wm.wekan.rest.LoginPost;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -22,6 +25,12 @@ public class Application implements CommandLineRunner {
     public void run(String... args) {
         try {
             WekanConfiguration wekanConfiguration = new WekanConfiguration();
+
+            LoginPost loginPost = new LoginPost(wekanConfiguration);
+            loginPost.login();
+
+            CardPost cardPost = new CardPost(loginPost.getToken(), wekanConfiguration);
+            cardPost.postCard("Test from spring", "Test card from awesome spring app.\nAnd next line");
 
         } catch (BrmException ex) {
             System.exit(ex.getExitCode().getCode());
