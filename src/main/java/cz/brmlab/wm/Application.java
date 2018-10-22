@@ -2,21 +2,23 @@ package cz.brmlab.wm;
 
 import cz.brmlab.wm.utils.Exceptions.BrmException;
 import cz.brmlab.wm.wekan.WekanConfiguration;
-import cz.brmlab.wm.wekan.pojo.card.CardRequest;
 import cz.brmlab.wm.wekan.rest.CardPost;
 import cz.brmlab.wm.wekan.rest.LoginPost;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@Slf4j
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
     private static final Logger LOG = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) {
+        log.trace("Starting wekan-mailer app...");
         SpringApplication.run(Application.class, args);
     }
 
@@ -33,6 +35,7 @@ public class Application implements CommandLineRunner {
             cardPost.postCard("Test from spring", "Test card from awesome spring app.\nAnd next line");
 
         } catch (BrmException ex) {
+            log.error("Error {} encountered, shutting down!", ex.getExitCode());
             System.exit(ex.getExitCode().getCode());
         }
     }

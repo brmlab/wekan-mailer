@@ -1,7 +1,5 @@
 package cz.brmlab.wm.wekan.pojo.card;
 
-import cz.brmlab.wm.wekan.WekanConfiguration;
-import cz.brmlab.wm.wekan.pojo.login.LoginToken;
 import lombok.Data;
 
 @Data

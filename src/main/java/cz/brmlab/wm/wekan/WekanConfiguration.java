@@ -3,19 +3,14 @@ package cz.brmlab.wm.wekan;
 import cz.brmlab.wm.utils.Exceptions.BrmException;
 import cz.brmlab.wm.utils.Exceptions.ExitCode;
 import lombok.Getter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Slf4j
 public class WekanConfiguration {
-
-    /**
-     * Class logger
-     */
-    private static final Logger LOG = LoggerFactory.getLogger(WekanConfiguration.class);
 
     //ENV variables for wekan
     private static final String WEKAN_URL = "WEKAN_URL";
@@ -33,7 +28,7 @@ public class WekanConfiguration {
      * @throws BrmException if some of the properties is missing in ENV variables.
      */
     public WekanConfiguration() throws BrmException {
-        LOG.trace("{}() - start.", this.getClass().getSimpleName());
+        log.trace("{}() - start.", this.getClass().getSimpleName());
 
         for (String prop : properties) {
             checkProp(prop);
@@ -44,7 +39,7 @@ public class WekanConfiguration {
         this.wekanBoard = System.getenv(WEKAN_TARGET_BOARD);
         this.wekanList = System.getenv(WEKAN_TARGET_LIST);
 
-        LOG.info("Wekan config loaded successfully.");
+        log.info("Wekan config loaded successfully.");
     }
 
     @Getter
@@ -63,11 +58,11 @@ public class WekanConfiguration {
     private String wekanList;
 
     private void checkProp(String prop) throws BrmException {
-        LOG.trace("checkProp({}) - start.", prop);
+        log.trace("checkProp({}) - start.", prop);
 
         if (System.getenv(prop) == null) {
             String message = ExitCode.CONFIGURATION_MISSING.getReason() + prop;
-            LOG.error(message, ExitCode.CONFIGURATION_MISSING);
+            log.error(message, ExitCode.CONFIGURATION_MISSING);
             throw new BrmException(message, ExitCode.CONFIGURATION_MISSING);
         }
     }
