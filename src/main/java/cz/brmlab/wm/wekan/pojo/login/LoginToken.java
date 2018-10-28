@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class LoginToken {
-    public String id;
-    public String token;
-    public String tokenExpires;
+    private String id;
+    private String token;
+    private String tokenExpires;
 }
