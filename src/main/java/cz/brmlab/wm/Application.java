@@ -2,6 +2,7 @@ package cz.brmlab.wm;
 
 import cz.brmlab.wm.utils.Exceptions.BrmException;
 import cz.brmlab.wm.wekan.WekanConfiguration;
+import cz.brmlab.wm.wekan.pojo.card.PostCardResponse;
 import cz.brmlab.wm.wekan.rest.CardPost;
 import cz.brmlab.wm.wekan.rest.LoginPost;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +33,7 @@ public class Application implements CommandLineRunner {
             loginPost.login();
 
             CardPost cardPost = new CardPost(loginPost.getToken(), wekanConfiguration);
-            cardPost.postCard("Test from spring", "Test card from awesome spring app.\nAnd next line");
+            PostCardResponse postCardResponse = cardPost.postCard("Test from spring", "Test card from awesome spring app.\nAnd next line");
 
         } catch (BrmException ex) {
             log.error("Error {} encountered, shutting down!", ex.getExitCode());

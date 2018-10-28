@@ -4,7 +4,8 @@ import lombok.Getter;
 
 public enum ExitCode {
 
-    CONFIGURATION_MISSING(10, "Missing configuration property: ");
+    CONFIGURATION_MISSING(10, "Missing configuration property: "),
+    POST_ERROR(20, "Failed POST request, RC: ");
 
     @Getter
     private String reason;

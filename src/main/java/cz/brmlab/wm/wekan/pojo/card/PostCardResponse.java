@@ -3,8 +3,8 @@ package cz.brmlab.wm.wekan.pojo.card;
 import lombok.Data;
 
 @Data
-public class CardResponse {
+public class PostCardResponse {
 
-    private String id;
+    private String _id;
 
 }
