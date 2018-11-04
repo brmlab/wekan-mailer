@@ -1,7 +1,8 @@
 package cz.brmlab.wm;
 
-import cz.brmlab.wm.utils.Exceptions.BrmException;
-import cz.brmlab.wm.wekan.WekanConfiguration;
+import cz.brmlab.wm.config.MailConfiguration;
+import cz.brmlab.wm.config.WekanConfiguration;
+import cz.brmlab.wm.utils.exceptions.BrmException;
 import cz.brmlab.wm.wekan.pojo.card.PostCardResponse;
 import cz.brmlab.wm.wekan.rest.CardPost;
 import cz.brmlab.wm.wekan.rest.LoginPost;
@@ -28,6 +29,7 @@ public class Application implements CommandLineRunner {
     public void run(String... args) {
         try {
             WekanConfiguration wekanConfiguration = new WekanConfiguration();
+            MailConfiguration mailConfiguration = new MailConfiguration();
 
             LoginPost loginPost = new LoginPost(wekanConfiguration);
             loginPost.login();
@@ -37,6 +39,7 @@ public class Application implements CommandLineRunner {
 
         } catch (BrmException ex) {
             log.error("Error {} encountered, shutting down!", ex.getExitCode());
+            log.error("Error message is: {}", ex.getMessage());
             System.exit(ex.getExitCode().getCode());
         }
     }

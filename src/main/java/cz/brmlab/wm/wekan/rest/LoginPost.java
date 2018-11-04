@@ -1,7 +1,7 @@
 package cz.brmlab.wm.wekan.rest;
 
 import cz.brmlab.wm.utils.LogMarker.LogMarker;
-import cz.brmlab.wm.wekan.WekanConfiguration;
+import cz.brmlab.wm.config.WekanConfiguration;
 import cz.brmlab.wm.wekan.pojo.login.LoginRequest;
 import cz.brmlab.wm.wekan.pojo.login.LoginToken;
 import lombok.Getter;

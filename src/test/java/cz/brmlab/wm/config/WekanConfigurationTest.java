@@ -1,7 +1,7 @@
-package cz.brmlab.wm.wekan;
+package cz.brmlab.wm.config;
 
-import cz.brmlab.wm.utils.Exceptions.BrmException;
-import cz.brmlab.wm.utils.Exceptions.ExitCode;
+import cz.brmlab.wm.utils.exceptions.BrmException;
+import cz.brmlab.wm.utils.exceptions.ExitCode;
 import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
@@ -21,8 +21,8 @@ public class WekanConfigurationTest {
     private static final String WEKAN_USER = "WEKAN_USER";
     private static final String WEKAN_USER_VALUE = "someuser";
 
-    private static final String WEKAN_PASSWORD = "WEKAN_PASSWORD";
-    private static final String WEKAN_PASSWORD_VALUE = "somepass";
+    private static final String WEKAN_PASS = "WEKAN_PASS";
+    private static final String WEKAN_PASS_VALUE = "somepass";
 
     private static final String WEKAN_TARGET_BOARD = "WEKAN_TARGET_BOARD";
     private static final String WEKAN_TARGET_BOARD_VALUE = "someboardif";
@@ -33,14 +33,14 @@ public class WekanConfigurationTest {
 
     @After
     public void cleanEnvVars() {
-        environmentVariables.clear(WEKAN_URL, WEKAN_USER, WEKAN_PASSWORD, WEKAN_TARGET_BOARD, WEKAN_TARGET_LIST);
+        environmentVariables.clear(WEKAN_URL, WEKAN_USER, WEKAN_PASS, WEKAN_TARGET_BOARD, WEKAN_TARGET_LIST);
     }
 
     @Test
     public void configurationOk() {
         environmentVariables.set(WEKAN_URL, WEKAN_URL_VALUE);
         environmentVariables.set(WEKAN_USER, WEKAN_USER_VALUE);
-        environmentVariables.set(WEKAN_PASSWORD, WEKAN_PASSWORD_VALUE);
+        environmentVariables.set(WEKAN_PASS, WEKAN_PASS_VALUE);
         environmentVariables.set(WEKAN_TARGET_BOARD, WEKAN_TARGET_BOARD_VALUE);
         environmentVariables.set(WEKAN_TARGET_LIST, WEKAN_TARGET_LIST_VALUE);
 
@@ -53,7 +53,7 @@ public class WekanConfigurationTest {
         }
         assertEquals(WEKAN_URL_VALUE, configuration.getWekanUrl());
         assertEquals(WEKAN_USER_VALUE, configuration.getWekanUser());
-        assertEquals(WEKAN_PASSWORD_VALUE, configuration.getWekanPassword());
+        assertEquals(WEKAN_PASS_VALUE, configuration.getWekanPassword());
         assertEquals(WEKAN_TARGET_BOARD_VALUE, configuration.getWekanBoard());
         assertEquals(WEKAN_TARGET_LIST_VALUE, configuration.getWekanList());
     }
@@ -63,7 +63,7 @@ public class WekanConfigurationTest {
         WekanConfiguration configuration = null;
         try {
             configuration = new WekanConfiguration();
-            fail("Missing whole configuration should not throw an error!");
+            fail("Missing whole configuration should throw an error!");
         } catch (BrmException ignored) {
 
         }
@@ -75,16 +75,16 @@ public class WekanConfigurationTest {
 
         environmentVariables.set(WEKAN_URL, WEKAN_URL_VALUE);
         environmentVariables.set(WEKAN_USER, WEKAN_USER_VALUE);
-        //environmentVariables.set(WEKAN_PASSWORD, WEKAN_PASSWORD_VALUE);
+        //environmentVariables.set(WEKAN_PASS, WEKAN_PASS_VALUE);
         environmentVariables.set(WEKAN_TARGET_BOARD, WEKAN_TARGET_BOARD_VALUE);
         environmentVariables.set(WEKAN_TARGET_LIST, WEKAN_TARGET_LIST_VALUE);
 
         WekanConfiguration configuration = null;
         try {
             configuration = new WekanConfiguration();
-            fail("Missing one property in configuration should not throw an error!");
+            fail("Missing one property in configuration should throw an error!");
         } catch (BrmException ex) {
-            assertEquals(ExitCode.CONFIGURATION_MISSING.getReason() + WEKAN_PASSWORD, ex.getMessage());
+            assertEquals(ExitCode.CONFIGURATION_MISSING.getReason() + WEKAN_PASS, ex.getMessage());
         }
         assertNull(null, configuration);
     }

@@ -1,8 +1,8 @@
 package cz.brmlab.wm.wekan.rest;
 
-import cz.brmlab.wm.utils.Exceptions.BrmException;
-import cz.brmlab.wm.utils.Exceptions.ExitCode;
-import cz.brmlab.wm.wekan.WekanConfiguration;
+import cz.brmlab.wm.utils.exceptions.BrmException;
+import cz.brmlab.wm.utils.exceptions.ExitCode;
+import cz.brmlab.wm.config.WekanConfiguration;
 import cz.brmlab.wm.wekan.pojo.card.PostCardRequest;
 import cz.brmlab.wm.wekan.pojo.card.PostCardResponse;
 import cz.brmlab.wm.wekan.pojo.login.LoginToken;
