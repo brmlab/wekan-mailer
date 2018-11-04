@@ -1,4 +1,4 @@
-package cz.brmlab.wm.utils.Exceptions;
+package cz.brmlab.wm.utils.exceptions;
 
 import lombok.Getter;
 

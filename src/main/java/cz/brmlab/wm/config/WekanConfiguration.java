@@ -1,6 +1,6 @@
 package cz.brmlab.wm.config;
 
-import cz.brmlab.wm.utils.Exceptions.BrmException;
+import cz.brmlab.wm.utils.exceptions.BrmException;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 

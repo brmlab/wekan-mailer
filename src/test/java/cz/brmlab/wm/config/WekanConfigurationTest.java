@@ -1,8 +1,7 @@
 package cz.brmlab.wm.config;
 
-import cz.brmlab.wm.config.WekanConfiguration;
-import cz.brmlab.wm.utils.Exceptions.BrmException;
-import cz.brmlab.wm.utils.Exceptions.ExitCode;
+import cz.brmlab.wm.utils.exceptions.BrmException;
+import cz.brmlab.wm.utils.exceptions.ExitCode;
 import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
