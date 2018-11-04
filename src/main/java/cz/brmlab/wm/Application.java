@@ -1,7 +1,7 @@
 package cz.brmlab.wm;
 
 import cz.brmlab.wm.utils.Exceptions.BrmException;
-import cz.brmlab.wm.wekan.WekanConfiguration;
+import cz.brmlab.wm.config.WekanConfiguration;
 import cz.brmlab.wm.wekan.pojo.card.PostCardResponse;
 import cz.brmlab.wm.wekan.rest.CardPost;
 import cz.brmlab.wm.wekan.rest.LoginPost;
