@@ -6,8 +6,14 @@ services:
     container_name: wekan-mailer
     restart: always
     environment:
-      - WEKAN_URL=http://localhost:3000
-      - WEKAN_USER=someuser
-      - WEKAN_PASSWORD=somepass
-      - WEKAN_TARGET_BOARD=someId
-      - WEKAN_TARGET_LIST=someListId
+    - WEKAN_URL=http://localhost:3000
+    - WEKAN_USER=someuser
+    - WEKAN_PASS=somepass
+    - WEKAN_TARGET_BOARD=someId
+    - WEKAN_TARGET_LIST=someListId
+    - MAIL_PROTOCOL=imap
+    - MAIL_URL=imap.server.somewhere
+    - MAIL_PORT=993
+    - MAIL_USER=mailuser
+    - MAIL_PASS=mailpass
+    - MAIL_FOLDER=inbox

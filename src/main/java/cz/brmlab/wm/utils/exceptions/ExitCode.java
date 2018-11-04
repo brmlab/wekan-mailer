@@ -5,6 +5,7 @@ import lombok.Getter;
 public enum ExitCode {
 
     CONFIGURATION_MISSING(10, "Missing configuration property: "),
+    UNSUPPORTED_PROTOCOL(15, "Unsupported email protocol specified! IMAP only is currently supported."),
     POST_ERROR(20, "Failed POST request, RC: ");
 
     @Getter
